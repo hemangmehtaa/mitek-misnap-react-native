@@ -1,0 +1,31 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
+//pluginManagement {
+//    repositories {
+//        gradlePluginPortal()
+//        google()
+//        mavenCentral()
+//    }
+//}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        maven {
+            url = uri("https://maven.pkg.github.com/mitek-systems/misnap-android")
+            credentials {
+                username = "github username"
+                password = "github personal access token"
+            }
+        }
+        mavenLocal()
+    }
+}
+
+rootProject.name = 'AwesomeProject'
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
+includeBuild('../node_modules/react-native-gradle-plugin')

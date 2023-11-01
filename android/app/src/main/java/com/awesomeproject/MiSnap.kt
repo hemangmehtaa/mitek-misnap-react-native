@@ -1,0 +1,42 @@
+package com.mitek.misnap;
+
+interface MiSnap {
+    val misnapResultSuccessSessionsKey: String
+        get() = "MISNAP_SUCCESS_SESSIONS"
+    val misnapSessionsTypeKey: String
+        get() = "SESSION_TYPE"
+    val misnapFaceSession: String
+        get() = "FaceSession"
+    val misnapDocumentSession: String
+        get() = "DocumentSession"
+    val misnapBarcodeSession: String
+        get() = "BarcodeSession"
+    val misnapNfcSession: String
+        get() = "NfcSession"
+    val misnapResultMIBIKey: String
+        get() = "MiSnapMIBIData"
+    val misnapResultImageKey: String
+        get() = "encodedImage"
+    val misnapResultPdf417Key: String
+        get() = "pdf417"
+    val misnapResultMrzKey: String
+        get() = "MiSnapMrzResult"
+    val misnapResultNfcServerDataKey: String
+        get() = "nfcServerTransaction"
+    val misnapResultNfcChipDataKey: String
+        get() = "nfcChipData"
+    val misnapResultVideoKey: String
+        get() = "video"
+    val misnapSuccessSessionsWarningsKey: String
+        get() = "warnings"
+    val misnapErrorLicenseKey: String
+        get() = "MISNAP_ERROR_LICENSE"
+    val misnapErrorPermissionKey: String
+        get() = "MISNAP_ERROR_PERMISSION"
+    val misnapErrorCameraKey: String
+        get() = "MISNAP_ERROR_CAMERA"
+    val misnapErrorCancelKey: String
+        get() = "MISNAP_ERROR_CANCEL"
+    val misnapParamScanNFCKey: String
+        get() = "scanNFC"
+}
