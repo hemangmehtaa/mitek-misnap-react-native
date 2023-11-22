@@ -33,15 +33,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-
         jcenter()
-        maven {
-            url = uri("https://maven.pkg.github.com/mitek-systems/misnap-android")
-            credentials {
-                username = "your github username"
-                password = "your github password"
-            }
-        }
         mavenLocal()
 
 

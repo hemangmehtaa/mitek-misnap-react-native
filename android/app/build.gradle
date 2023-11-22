@@ -104,7 +104,7 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.awesomeproject"
+    namespace "com.mitek.misnap"
     defaultConfig {
         applicationId "com.mitek.hemang"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -162,25 +162,25 @@ android {
 dependencies {
 
 
-    implementation("com.miteksystems.misnap:document:5.3.4")
+    implementation("com.miteksystems.misnap:document:5.4.0")
 
     // Use this for barcode sessions
-    implementation("com.miteksystems.misnap:barcode:5.3.4")
+    implementation("com.miteksystems.misnap:barcode:5.4.0")
 
     // Use this for selfie + voice sessions
-    implementation("com.miteksystems.misnap:biometric:5.3.4")
+    implementation("com.miteksystems.misnap:biometric:5.4.0")
 
     // Use this for selfie sessions
-    implementation("com.miteksystems.misnap:face:5.3.4")
+    implementation("com.miteksystems.misnap:face:5.4.0")
 
     // Use this for voice sessions
-    implementation("com.miteksystems.misnap:voice:5.3.4")
+    implementation("com.miteksystems.misnap:voice:5.4.0")
 
     // Use this for automatically getting the nfc credentials and then reading the chip
-    implementation("com.miteksystems.misnap:combined-nfc:5.3.4")
+    implementation("com.miteksystems.misnap:combined-nfc:5.4.0")
 
     // Use this for only reading the nfc chip
-    implementation("com.miteksystems.misnap:nfc:5.3.4")
+    implementation("com.miteksystems.misnap:nfc:5.4.0")
 
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")

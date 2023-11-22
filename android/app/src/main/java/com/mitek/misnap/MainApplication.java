@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.mitek.misnap;
 
 import android.app.Application;
 
@@ -7,34 +7,10 @@ import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
-import android.app.Application;
-import android.content.Context;
-import android.content.res.Configuration;
-import androidx.annotation.NonNull;
-import com.facebook.react.PackageList;
-
-
-
-import com.facebook.react.ReactInstanceManager;
-
-
-import com.facebook.react.config.ReactFeatureFlags;
-import com.facebook.soloader.SoLoader;
-import com.awesomeproject.MainApplicationReactNativeHost;
-//import com.awesomeproject.MiSnapAppPackage;
-import com.mitek.misnap.MiSnapAppPackage;
-//import com.awesomeproject.BuildConfig;
-
-//import expo.modules.ApplicationLifecycleDispatcher;
-//import expo.modules.ReactNativeHostWrapper;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-
+import com.misnap.ReactNativeFlipper;
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =

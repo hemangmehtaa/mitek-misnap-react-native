@@ -22,44 +22,19 @@ class ReactNativeMiSnapManager(reactContext: ReactApplicationContext) : MiSnap, 
     }
 
     @ReactMethod
-    fun initiateAnyIdDocumentCapture(license: String?) {
-        try {
-            //We do not have AnyId option in Android. Hence creating ID_Front
-            val  miSnapSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_FRONT, license!!)
-
-            miSnapSettings.apply {
-                analysis.document.documentExtractionRequirement =
-                    MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
-            }
-
-            val miSnapWorkflowIntent = MiSnapWorkflowActivity.buildIntent(
-                currentActivity!!,
-                MiSnapWorkflowStep(miSnapSettings),
-            )
-
-            currentActivity!!.startActivityForResult(
-                miSnapWorkflowIntent,
-                misnapRequestCode
-            )
-        } catch (e: Exception) {
-            miSnapPromise!!.reject("ERROR_TRIGGERING_MISNAP_ACTIVITY", e)
-            miSnapPromise = null
-        }
-    }
-
-    @ReactMethod
     fun initiatePassportDocumentCapture(license: String?) {
         try {
-            val  miSnapSettings = MiSnapSettings(MiSnapSettings.UseCase.PASSPORT, license!!)
+            //We do not have AnyId option in Android. Hence creating ID_Front
+            val  miSnapPassportDocumentCaptureSettings = MiSnapSettings(MiSnapSettings.UseCase.PASSPORT, license!!)
 
-            miSnapSettings.apply {
+            miSnapPassportDocumentCaptureSettings.apply {
                 analysis.document.documentExtractionRequirement =
                     MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
             }
 
             val miSnapWorkflowIntent = MiSnapWorkflowActivity.buildIntent(
                 currentActivity!!,
-                MiSnapWorkflowStep(miSnapSettings),
+                MiSnapWorkflowStep(miSnapPassportDocumentCaptureSettings)
             )
 
             currentActivity!!.startActivityForResult(
@@ -75,16 +50,16 @@ class ReactNativeMiSnapManager(reactContext: ReactApplicationContext) : MiSnap, 
     @ReactMethod
     fun initiateFrontIdDocumentCapture(license: String?) {
         try {
-            val  miSnapSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_FRONT, license!!)
+            val  miSnapFrontIdDocumentCaptureSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_FRONT, license!!)
 
-            miSnapSettings.apply {
+            miSnapFrontIdDocumentCaptureSettings.apply {
                 analysis.document.documentExtractionRequirement =
                     MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
             }
 
             val miSnapWorkflowIntent = MiSnapWorkflowActivity.buildIntent(
                 currentActivity!!,
-                MiSnapWorkflowStep(miSnapSettings),
+                MiSnapWorkflowStep(miSnapFrontIdDocumentCaptureSettings),
             )
 
             currentActivity!!.startActivityForResult(
@@ -100,16 +75,16 @@ class ReactNativeMiSnapManager(reactContext: ReactApplicationContext) : MiSnap, 
     @ReactMethod
     fun initiateBackIdDocumentCapture(license: String?) {
         try {
-            val  miSnapSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_BACK, license!!)
+            val  miSnapBackIdDocumentCaptureSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_BACK, license!!)
 
-            miSnapSettings.apply {
+            miSnapBackIdDocumentCaptureSettings.apply {
                 analysis.document.documentExtractionRequirement =
                     MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
             }
 
             val miSnapWorkflowIntent = MiSnapWorkflowActivity.buildIntent(
                 currentActivity!!,
-                MiSnapWorkflowStep(miSnapSettings),
+                MiSnapWorkflowStep(miSnapBackIdDocumentCaptureSettings),
             )
 
             currentActivity!!.startActivityForResult(
@@ -123,18 +98,25 @@ class ReactNativeMiSnapManager(reactContext: ReactApplicationContext) : MiSnap, 
     }
 
     @ReactMethod
-    fun initiateFrontCheckDocumentCapture(license: String?) {
+    fun initiatePassportAndNfcWorkflow(license: String?) {
         try {
-            val  miSnapSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_FRONT, license!!)
+            val  miSnapPassportDocumentCaptureSettings = MiSnapSettings(MiSnapSettings.UseCase.PASSPORT, license!!)
+            val  miSnapNfcSettings = MiSnapSettings(MiSnapSettings.UseCase.NFC, license!!)
 
-            miSnapSettings.apply {
+            miSnapPassportDocumentCaptureSettings.apply {
+                analysis.document.documentExtractionRequirement =
+                    MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
+            }
+
+            miSnapNfcSettings.apply {
                 analysis.document.documentExtractionRequirement =
                     MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
             }
 
             val miSnapWorkflowIntent = MiSnapWorkflowActivity.buildIntent(
                 currentActivity!!,
-                MiSnapWorkflowStep(miSnapSettings),
+                MiSnapWorkflowStep(miSnapPassportDocumentCaptureSettings),
+                MiSnapWorkflowStep(miSnapNfcSettings)
             )
 
             currentActivity!!.startActivityForResult(
@@ -148,18 +130,27 @@ class ReactNativeMiSnapManager(reactContext: ReactApplicationContext) : MiSnap, 
     }
 
     @ReactMethod
-    fun initiateBackCheckDocumentCapture(license: String?) {
+    fun initiateIdAndNfcWorkflow(license: String?) {
         try {
-            val  miSnapSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_BACK, license!!)
+            val  miSnapFrontIdDocumentCaptureSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_FRONT, license!!)
+            val  miSnapBackIdDocumentCaptureSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_BACK, license!!)
+            val  miSnapNFCSettings = MiSnapSettings(MiSnapSettings.UseCase.NFC, license!!)
 
-            miSnapSettings.apply {
+            miSnapFrontIdDocumentCaptureSettings.apply {
+                analysis.document.documentExtractionRequirement =
+                    MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
+            }
+
+            miSnapBackIdDocumentCaptureSettings.apply {
                 analysis.document.documentExtractionRequirement =
                     MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
             }
 
             val miSnapWorkflowIntent = MiSnapWorkflowActivity.buildIntent(
                 currentActivity!!,
-                MiSnapWorkflowStep(miSnapSettings),
+                MiSnapWorkflowStep(miSnapFrontIdDocumentCaptureSettings),
+                MiSnapWorkflowStep(miSnapBackIdDocumentCaptureSettings),
+                MiSnapWorkflowStep(miSnapNFCSettings)
             )
 
             currentActivity!!.startActivityForResult(
@@ -173,18 +164,63 @@ class ReactNativeMiSnapManager(reactContext: ReactApplicationContext) : MiSnap, 
     }
 
     @ReactMethod
-    fun initiateGenericDocumentCapture(license: String?) {
+    fun initiatePassportNfcAndFaceWorkflow(license: String?) {
         try {
-            val  miSnapSettings = MiSnapSettings(MiSnapSettings.UseCase.GENERIC_DOCUMENT, license!!)
+            val  miSnapPassportDocumentCaptureSettings = MiSnapSettings(MiSnapSettings.UseCase.PASSPORT, license!!)
+            val  miSnapNfcSettings = MiSnapSettings(MiSnapSettings.UseCase.NFC, license!!)
+            val  miSnapFaceSettings = MiSnapSettings(MiSnapSettings.UseCase.FACE, license!!)
 
-            miSnapSettings.apply {
+            miSnapPassportDocumentCaptureSettings.apply {
+                analysis.document.documentExtractionRequirement =
+                    MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
+            }
+
+            miSnapNfcSettings.apply {
                 analysis.document.documentExtractionRequirement =
                     MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
             }
 
             val miSnapWorkflowIntent = MiSnapWorkflowActivity.buildIntent(
                 currentActivity!!,
-                MiSnapWorkflowStep(miSnapSettings),
+                MiSnapWorkflowStep(miSnapPassportDocumentCaptureSettings),
+                MiSnapWorkflowStep(miSnapNfcSettings),
+                MiSnapWorkflowStep(miSnapFaceSettings)
+            )
+
+            currentActivity!!.startActivityForResult(
+                miSnapWorkflowIntent,
+                misnapRequestCode
+            )
+        } catch (e: Exception) {
+            miSnapPromise!!.reject("ERROR_TRIGGERING_MISNAP_ACTIVITY", e)
+            miSnapPromise = null
+        }
+    }
+
+    @ReactMethod
+    fun initiateIdNfcAndFaceWorkflow(license: String?) {
+        try {
+            val  miSnapFrontIdDocumentCaptureSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_FRONT, license!!)
+            val  miSnapBackIdDocumentCaptureSettings = MiSnapSettings(MiSnapSettings.UseCase.ID_BACK, license!!)
+            val  miSnapNFCSettings = MiSnapSettings(MiSnapSettings.UseCase.NFC, license!!)
+            val  miSnapFaceSettings = MiSnapSettings(MiSnapSettings.UseCase.FACE, license!!)
+
+            miSnapFrontIdDocumentCaptureSettings.apply {
+                analysis.document.documentExtractionRequirement =
+                    MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
+            }
+
+            miSnapBackIdDocumentCaptureSettings.apply {
+                analysis.document.documentExtractionRequirement =
+                    MiSnapSettings.Analysis.Document.ExtractionRequirement.OPTIONAL
+            }
+
+            val miSnapWorkflowIntent = MiSnapWorkflowActivity.buildIntent(
+                currentActivity!!,
+                MiSnapWorkflowStep(miSnapFrontIdDocumentCaptureSettings),
+                MiSnapWorkflowStep(miSnapBackIdDocumentCaptureSettings),
+                MiSnapWorkflowStep(miSnapNFCSettings),
+                MiSnapWorkflowStep(miSnapFaceSettings)
             )
 
             currentActivity!!.startActivityForResult(
@@ -234,9 +270,10 @@ private val mActivityEventListener =
                                             session.putString(misnapResultImageKey, base64EncodedImg)
                                             session.putString(misnapResultPdf417Key, result.barcode?.encodedBarcode)
                                             // TODO check if this result is ok or we should parse mrz object into required strings...
-                                            session.putString(misnapResultMrzKey, result.mrz.toString())
+                                            session.putString(misnapResultMrzKey, result.extraction?.mrz.toString())
                                             // session.putString(misnapResultVideoKey, result.video.contentToString())
                                         }
+
                                         is MiSnapFinalResult.FaceSession -> {
                                             session.putString(misnapSessionsTypeKey, misnapFaceSession)
                                             session.putArray(misnapSuccessSessionsWarningsKey, Arguments.fromList(result.warnings))

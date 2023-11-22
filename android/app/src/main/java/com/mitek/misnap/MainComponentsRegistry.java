@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.mitek.misnap;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

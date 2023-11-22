@@ -1,13 +1,5 @@
 import org.gradle.api.initialization.resolve.RepositoriesMode
 
-//pluginManagement {
-//    repositories {
-//        gradlePluginPortal()
-//        google()
-//        mavenCentral()
-//    }
-//}
-
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
@@ -17,8 +9,8 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://maven.pkg.github.com/mitek-systems/misnap-android")
             credentials {
-                username = "github username"
-                password = "github personal access token"
+                username = "your github username"
+                password = "your github personal access token"
             }
         }
         mavenLocal()
