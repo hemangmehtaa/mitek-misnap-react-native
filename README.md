@@ -30,4 +30,4 @@ Please follow these steps:
       }
     }
     ```
-3. Add the required dependencies as per the [Integration Guides](#integration-guides).
+
