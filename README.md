@@ -15,7 +15,7 @@ Please follow these steps:
 
 1. Create a Personal Access Token (PAT) on https://www.github.com.  
    Please follow [this guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-token) to create a PAT and make sure to select the `read:packages` scope.
-2. Add the following to the **project level** `build.gradle`:
+2. Add the following to the **project level** `settings.gradle`:
     ```groovy
     allProjects {
       repositories {
