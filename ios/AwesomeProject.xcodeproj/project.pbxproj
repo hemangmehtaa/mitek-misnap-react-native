@@ -13,6 +13,10 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		240F3B4A2A30B6A4002CAAC3 /* ReactNativeMiSnapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 240F3B492A30B6A4002CAAC3 /* ReactNativeMiSnapManager.m */; };
+		24B43E4E2B2757CE000C37C5 /* MiSnapWorkflowViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B43E4B2B2757CE000C37C5 /* MiSnapWorkflowViewControllerFactory.swift */; };
+		24B43E4F2B2757CE000C37C5 /* MiSnapWorkflowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B43E4C2B2757CE000C37C5 /* MiSnapWorkflowController.swift */; };
+		24B43E502B2757CE000C37C5 /* MiSnapWorkflowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B43E4D2B2757CE000C37C5 /* MiSnapWorkflowViewController.swift */; };
+		24B43E552B275E23000C37C5 /* MiSnapWorkflowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B43E542B275E23000C37C5 /* MiSnapWorkflowManager.swift */; };
 		7699B88040F8A987B510C191 /* libPods-AwesomeProject-AwesomeProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-AwesomeProject-AwesomeProjectTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -40,6 +44,11 @@
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-AwesomeProject-AwesomeProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AwesomeProject-AwesomeProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		240F3B482A30B68D002CAAC3 /* ReactNativeMiSnapManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactNativeMiSnapManager.h; sourceTree = "<group>"; };
 		240F3B492A30B6A4002CAAC3 /* ReactNativeMiSnapManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactNativeMiSnapManager.m; sourceTree = "<group>"; };
+		24B43E4B2B2757CE000C37C5 /* MiSnapWorkflowViewControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiSnapWorkflowViewControllerFactory.swift; sourceTree = "<group>"; };
+		24B43E4C2B2757CE000C37C5 /* MiSnapWorkflowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiSnapWorkflowController.swift; sourceTree = "<group>"; };
+		24B43E4D2B2757CE000C37C5 /* MiSnapWorkflowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiSnapWorkflowViewController.swift; sourceTree = "<group>"; };
+		24B43E532B275A18000C37C5 /* AwesomeProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AwesomeProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		24B43E542B275E23000C37C5 /* MiSnapWorkflowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiSnapWorkflowManager.swift; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-AwesomeProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject.debug.xcconfig"; path = "Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-AwesomeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject.release.xcconfig"; path = "Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-AwesomeProject-AwesomeProjectTests/Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +98,9 @@
 		13B07FAE1A68108700A75B9A /* AwesomeProject */ = {
 			isa = PBXGroup;
 			children = (
+				24B43E4C2B2757CE000C37C5 /* MiSnapWorkflowController.swift */,
+				24B43E4D2B2757CE000C37C5 /* MiSnapWorkflowViewController.swift */,
+				24B43E4B2B2757CE000C37C5 /* MiSnapWorkflowViewControllerFactory.swift */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -97,6 +109,8 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				240F3B482A30B68D002CAAC3 /* ReactNativeMiSnapManager.h */,
 				240F3B492A30B6A4002CAAC3 /* ReactNativeMiSnapManager.m */,
+				24B43E532B275A18000C37C5 /* AwesomeProject-Bridging-Header.h */,
+				24B43E542B275E23000C37C5 /* MiSnapWorkflowManager.swift */,
 			);
 			name = AwesomeProject;
 			sourceTree = "<group>";
@@ -212,7 +226,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
@@ -417,8 +431,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B43E4F2B2757CE000C37C5 /* MiSnapWorkflowController.swift in Sources */,
 				240F3B4A2A30B6A4002CAAC3 /* ReactNativeMiSnapManager.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				24B43E502B2757CE000C37C5 /* MiSnapWorkflowViewController.swift in Sources */,
+				24B43E552B275E23000C37C5 /* MiSnapWorkflowManager.swift in Sources */,
+				24B43E4E2B2757CE000C37C5 /* MiSnapWorkflowViewControllerFactory.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -465,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-AwesomeProject-AwesomeProjectTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = AwesomeProjectTests/Info.plist;
@@ -507,6 +527,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mitek.hemang;
 				PRODUCT_NAME = AwesomeProject;
+				SWIFT_OBJC_BRIDGING_HEADER = "AwesomeProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -534,6 +555,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mitek.hemang;
 				PRODUCT_NAME = AwesomeProject;
+				SWIFT_OBJC_BRIDGING_HEADER = "AwesomeProject-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

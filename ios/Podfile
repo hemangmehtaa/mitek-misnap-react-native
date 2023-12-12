@@ -26,6 +26,12 @@ target 'AwesomeProject' do
   pod 'MiSnap'
   
   pod 'MiSnapUX'
+  pod 'MiSnapNFC'
+  pod 'MiSnapNFCUX'
+  pod 'MiSnapFacialCapture'
+  pod 'MiSnapFacialCaptureUX'
+  pod 'MiSnapVoiceCapture'
+  pod 'MiSnapVoiceCaptureUX'
   
   config = use_native_modules!
 

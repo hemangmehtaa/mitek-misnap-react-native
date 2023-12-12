@@ -11,9 +11,7 @@
 #import <React/RCTUIManager.h>
 #import <React/RCTLog.h>
 #import "AppDelegate.h"
-#import <MiSnapLicenseManager/MiSnapLicenseManager.h>
-#import <MiSnap/MiSnap.h>
-#import <MiSnapUX/MiSnapUX.h>
+
 
 #import <React/RCTAssert.h>
 #import <React/RCTBorderCurve.h>
@@ -29,6 +27,8 @@
 #import <React/RCTView.h>
 #import <React/UIView+React.h>
 #import <React/RCTTouchHandler.h>
+#import "AwesomeProject-Bridging-Header.h"
+#import "AwesomeProject-Swift.h"
 
 @implementation RCTConvert (UIAccessibilityTraits)
 
@@ -38,7 +38,7 @@
 {
   __weak RCTBridge *_bridge;
   BOOL _isPresented;
-  MiSnapViewController *_miSnapViewController;
+  MiSnapWorkflowManager *miSnapWorkflowManager;
   RCTTouchHandler *_touchHandler;
   
     CGRect _lastViewFrame;
@@ -72,109 +72,107 @@ RCT_EXPORT_MODULE()
   return [RCTShadowView new];
 }
 
-RCT_EXPORT_METHOD(initiateAnyIdDocumentCapture:(NSString *)license)
-{
-  RCTLogInfo(@"Initiate Any ID document capture - Begin");
-  
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [[MiSnapLicenseManager shared] setLicenseKey:license];
-    MiSnapConfiguration *configuration = [[MiSnapConfiguration alloc] initFor:MiSnapScienceDocumentTypeAnyId];
-    _miSnapViewController = [[MiSnapViewController alloc] initWith:configuration delegate:self];
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.window.rootViewController presentViewController:self.miSnapViewController animated:YES completion:nil];
-  });
-  
-  RCTLogInfo(@"Initiate Any ID document capture - End");
-}
-
 RCT_EXPORT_METHOD(initiatePassportDocumentCapture:(NSString *)license)
 {
   RCTLogInfo(@"Initiate Passport document capture - Begin");
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    [[MiSnapLicenseManager shared] setLicenseKey:license];
-    MiSnapConfiguration *configuration = [[MiSnapConfiguration alloc] initFor:MiSnapScienceDocumentTypePassport];
-    _miSnapViewController = [[MiSnapViewController alloc] initWith:configuration delegate:self];
+    self->miSnapWorkflowManager = [[MiSnapWorkflowManager alloc] init];
+    UIViewController *viewController = [self->miSnapWorkflowManager initiatePassportDocumentCaptureWithLicense:license];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.window.rootViewController presentViewController:self.miSnapViewController animated:YES completion:nil];
+    [appDelegate.window.rootViewController presentViewController:viewController animated:YES completion:nil];
   });
   
-  RCTLogInfo(@"Initiate passport document capture - End");
+  RCTLogInfo(@"Initiate Passport document capture - End");
 }
 
+//initiateFrontIdDocumentCapture
 RCT_EXPORT_METHOD(initiateFrontIdDocumentCapture:(NSString *)license)
 {
-  RCTLogInfo(@"Initiate Front Id document capture - Begin");
+  RCTLogInfo(@"Initiate Passport document capture - Begin");
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    [[MiSnapLicenseManager shared] setLicenseKey:license];
-    MiSnapConfiguration *configuration = [[MiSnapConfiguration alloc] initFor:MiSnapScienceDocumentTypeIdFront];
-    _miSnapViewController = [[MiSnapViewController alloc] initWith:configuration delegate:self];
+    self->miSnapWorkflowManager = [[MiSnapWorkflowManager alloc] init];
+    UIViewController *viewController = [self->miSnapWorkflowManager initiatePassportDocumentCaptureWithLicense:license];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.window.rootViewController presentViewController:self.miSnapViewController animated:YES completion:nil];
+    [appDelegate.window.rootViewController presentViewController:viewController animated:YES completion:nil];
   });
   
-  RCTLogInfo(@"Initiate Front Id document capture - End");
+  RCTLogInfo(@"Initiate Passport document capture - End");
 }
 
+//initiateBackIdDocumentCapture
 RCT_EXPORT_METHOD(initiateBackIdDocumentCapture:(NSString *)license)
 {
-  RCTLogInfo(@"Initiate Back Id document capture - Begin");
+  RCTLogInfo(@"Initiate Passport document capture - Begin");
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    [[MiSnapLicenseManager shared] setLicenseKey:license];
-    MiSnapConfiguration *configuration = [[MiSnapConfiguration alloc] initFor:MiSnapScienceDocumentTypeIdBack];
-    _miSnapViewController = [[MiSnapViewController alloc] initWith:configuration delegate:self];
+    self->miSnapWorkflowManager = [[MiSnapWorkflowManager alloc] init];
+    UIViewController *viewController = [self->miSnapWorkflowManager initiatePassportDocumentCaptureWithLicense:license];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.window.rootViewController presentViewController:self.miSnapViewController animated:YES completion:nil];
+    [appDelegate.window.rootViewController presentViewController:viewController animated:YES completion:nil];
   });
   
-  RCTLogInfo(@"Initiate Back Id document capture - End");
+  RCTLogInfo(@"Initiate Passport document capture - End");
 }
 
-RCT_EXPORT_METHOD(initiateFrontCheckDocumentCapture:(NSString *)license)
+//initiatePassportAndNfcWorkflow
+RCT_EXPORT_METHOD(initiatePassportAndNfcWorkflow:(NSString *)license)
 {
-  RCTLogInfo(@"Initiate Front Check document capture - Begin");
+  RCTLogInfo(@"Initiate Passport document capture - Begin");
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    [[MiSnapLicenseManager shared] setLicenseKey:license];
-    MiSnapConfiguration *configuration = [[MiSnapConfiguration alloc] initFor:MiSnapScienceDocumentTypeCheckFront];
-    _miSnapViewController = [[MiSnapViewController alloc] initWith:configuration delegate:self];
+    self->miSnapWorkflowManager = [[MiSnapWorkflowManager alloc] init];
+    UIViewController *viewController = [self->miSnapWorkflowManager initiatePassportDocumentCaptureWithLicense:license];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.window.rootViewController presentViewController:self.miSnapViewController animated:YES completion:nil];
+    [appDelegate.window.rootViewController presentViewController:viewController animated:YES completion:nil];
   });
   
-  RCTLogInfo(@"Initiate Front Check document capture - End");
+  RCTLogInfo(@"Initiate Passport document capture - End");
+}
+//initiateIdAndNfcWorkflow
+RCT_EXPORT_METHOD(initiateIdAndNfcWorkflow:(NSString *)license)
+{
+  RCTLogInfo(@"Initiate Passport document capture - Begin");
+  
+  dispatch_async(dispatch_get_main_queue(), ^{
+    self->miSnapWorkflowManager = [[MiSnapWorkflowManager alloc] init];
+    UIViewController *viewController = [self->miSnapWorkflowManager initiatePassportDocumentCaptureWithLicense:license];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.window.rootViewController presentViewController:viewController animated:YES completion:nil];
+  });
+  
+  RCTLogInfo(@"Initiate Passport document capture - End");
 }
 
-RCT_EXPORT_METHOD(initiateBackCheckDocumentCapture:(NSString *)license)
+//initiatePassportNfcAndFaceWorkflow
+RCT_EXPORT_METHOD(initiatePassportNfcAndFaceWorkflow:(NSString *)license)
 {
-  RCTLogInfo(@"Initiate Back Check document capture - Begin");
+  RCTLogInfo(@"Initiate Passport document capture - Begin");
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    [[MiSnapLicenseManager shared] setLicenseKey:license];
-    MiSnapConfiguration *configuration = [[MiSnapConfiguration alloc] initFor:MiSnapScienceDocumentTypeCheckBack];
-    _miSnapViewController = [[MiSnapViewController alloc] initWith:configuration delegate:self];
+    self->miSnapWorkflowManager = [[MiSnapWorkflowManager alloc] init];
+    UIViewController *viewController = [self->miSnapWorkflowManager initiatePassportDocumentCaptureWithLicense:license];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.window.rootViewController presentViewController:self.miSnapViewController animated:YES completion:nil];
+    [appDelegate.window.rootViewController presentViewController:viewController animated:YES completion:nil];
   });
   
-  RCTLogInfo(@"Initiate Back Check document capture - End");
+  RCTLogInfo(@"Initiate Passport document capture - End");
 }
 
-RCT_EXPORT_METHOD(initiateGenericDocumentCapture:(NSString *)license)
+//initiateIdNfcAndFaceWorkflow
+RCT_EXPORT_METHOD(initiateIdNfcAndFaceWorkflow:(NSString *)license)
 {
-  RCTLogInfo(@"Initiate generic document capture - Begin");
+  RCTLogInfo(@"Initiate Passport document capture - Begin");
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    [[MiSnapLicenseManager shared] setLicenseKey:license];
-    MiSnapConfiguration *configuration = [[MiSnapConfiguration alloc] initFor:MiSnapScienceDocumentTypeGeneric];
-    _miSnapViewController = [[MiSnapViewController alloc] initWith:configuration delegate:self];
+    self->miSnapWorkflowManager = [[MiSnapWorkflowManager alloc] init];
+    UIViewController *viewController = [self->miSnapWorkflowManager initiatePassportDocumentCaptureWithLicense:license];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.window.rootViewController presentViewController:self.miSnapViewController animated:YES completion:nil];
+    [appDelegate.window.rootViewController presentViewController:viewController animated:YES completion:nil];
   });
   
-  RCTLogInfo(@"Initiate generic document capture - End");
+  RCTLogInfo(@"Initiate Passport document capture - End");
 }
 
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getName)

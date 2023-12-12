@@ -77,14 +77,24 @@ PODS:
     - hermes-engine/Pre-built (= 0.71.8)
   - hermes-engine/Pre-built (0.71.8)
   - libevent (2.1.12)
-  - MiSnap (5.3.0):
-    - MiSnapLicenseManager (= 5.3.0)
-    - MiSnapMibiData (= 5.3.0)
-  - MiSnapAssetManager (5.3.0)
-  - MiSnapLicenseManager (5.3.0)
-  - MiSnapMibiData (5.3.0)
-  - MiSnapUX (5.3.0):
-    - MiSnapAssetManager (= 5.3.0)
+  - MiSnap (5.4.0):
+    - MiSnapCore (= 5.4.0)
+  - MiSnapAssetManager (5.4.0)
+  - MiSnapCore (5.4.0)
+  - MiSnapFacialCapture (5.4.0):
+    - MiSnapCore (= 5.4.0)
+  - MiSnapFacialCaptureUX (5.4.0):
+    - MiSnapAssetManager (= 5.4.0)
+  - MiSnapNFC (5.4.0):
+    - MiSnapCore (= 5.4.0)
+  - MiSnapNFCUX (5.4.0):
+    - MiSnapAssetManager (= 5.4.0)
+  - MiSnapUX (5.4.0):
+    - MiSnapAssetManager (= 5.4.0)
+  - MiSnapVoiceCapture (5.4.0):
+    - MiSnapCore (= 5.4.0)
+  - MiSnapVoiceCaptureUX (5.4.0):
+    - MiSnapAssetManager (= 5.4.0)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2021.07.22.00):
     - boost
@@ -421,7 +431,7 @@ PODS:
     - React-jsi (= 0.71.8)
     - React-logger (= 0.71.8)
     - React-perflogger (= 0.71.8)
-  - SocketRocket (0.6.0)
+  - SocketRocket (0.6.1)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -456,7 +466,13 @@ DEPENDENCIES:
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - libevent (~> 2.1.12)
   - MiSnap
+  - MiSnapFacialCapture
+  - MiSnapFacialCaptureUX
+  - MiSnapNFC
+  - MiSnapNFCUX
   - MiSnapUX
+  - MiSnapVoiceCapture
+  - MiSnapVoiceCaptureUX
   - OpenSSL-Universal (= 1.1.1100)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
@@ -505,9 +521,14 @@ SPEC REPOS:
     - libevent
     - MiSnap
     - MiSnapAssetManager
-    - MiSnapLicenseManager
-    - MiSnapMibiData
+    - MiSnapCore
+    - MiSnapFacialCapture
+    - MiSnapFacialCaptureUX
+    - MiSnapNFC
+    - MiSnapNFCUX
     - MiSnapUX
+    - MiSnapVoiceCapture
+    - MiSnapVoiceCaptureUX
     - OpenSSL-Universal
     - SocketRocket
     - YogaKit
@@ -601,11 +622,16 @@ SPEC CHECKSUMS:
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 47986d26692ae75ee7a17ab049caee8864f855de
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  MiSnap: bd39ff9776f8997066733f13d18f63572c645511
-  MiSnapAssetManager: b091646b56b0a0747b855dabbe72fa6be44b8066
-  MiSnapLicenseManager: f4b6aa113e3478948e42e38b75058a3d280f1f4c
-  MiSnapMibiData: 4662d4bbc6a92c281f4ea12b748c43f23e506013
-  MiSnapUX: d23a338dec2adc8cde2dc3d7beaf63334aee9477
+  MiSnap: cef0e916cbd6368b31c76dde9cba9c1c973470a2
+  MiSnapAssetManager: e53b007df73f87ba88da112b4d48282c1c72756a
+  MiSnapCore: c04643aae30bcbddec71c43f345585c691a3b0be
+  MiSnapFacialCapture: 8c7dc39ed016e8cf45e08fa8651219826c1bf4db
+  MiSnapFacialCaptureUX: 658ee94a5953b7cd418b4a9e407429623ffd9509
+  MiSnapNFC: 43c9eca3510e70dda2c190350855241f88d1f459
+  MiSnapNFCUX: fd0cac8aa12c70396889be2f2116d8f7c35ba676
+  MiSnapUX: 25c79b109a527ba08c41a4a6678a8176655e5509
+  MiSnapVoiceCapture: 0b9ee8741b2ccec1cc3847696da309849d96df63
+  MiSnapVoiceCaptureUX: 15bfff9e270c3b997bbaa23597b08b65698df39d
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: 8af6a32dfc2b65ec82193c2dee6e1011ff22ac2a
@@ -634,10 +660,10 @@ SPEC CHECKSUMS:
   React-RCTVibration: 43ffd976a25f6057a7cf95ea3648ba4e00287f89
   React-runtimeexecutor: 7c51ae9d4b3e9608a2366e39ccaa606aa551b9ed
   ReactCommon: 85c98ab0a509e70bf5ee5d9715cf68dbf495b84c
-  SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 065f0b74dba4832d6e328238de46eb72c5de9556
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: bffcdcb283ca25b2f71efea54770b8bd7611c58c
+PODFILE CHECKSUM: 0d217329bcc664b1e1bcfa1dce992f8ed350509f
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.14.2
